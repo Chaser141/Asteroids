@@ -3,6 +3,8 @@ from constants import *
 
 def main():
     pygame.init
+    clock = pygame.time.Clock()
+    dt = 0
     print("Starting Asteroids!")
     print("Screen width: 1280")
     print("Screen height: 720")
@@ -16,6 +18,7 @@ def main():
 
         screen.fill("black")
         pygame.display.flip()
+        dt = clock.tick(60) / 1000   # Limit to 60 FPS
 
 
     
