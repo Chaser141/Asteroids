@@ -5,6 +5,9 @@ from constants import *
 
 def main():
     pygame.init
+    updatables = pygame.sprite.Group()
+    drawables = pygame.sprite.Group()
+    Player.containers = (updatables, drawables)
     clock = pygame.time.Clock()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     dt = 0
@@ -20,7 +23,9 @@ def main():
                 return
 
         screen.fill("black")
-        player.draw(screen)
+        updatables.update(dt)
+        for sprite in drawables:
+            sprite.draw(screen)
         pygame.display.flip()
         dt = clock.tick(60) / 1000   # Limit to 60 FPS
 
